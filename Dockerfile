@@ -4,7 +4,6 @@ ENV DEBIAN_FRONTEND=noninteractive \
     TMPDIR=/tmp \
     TERM=linux \
     JACK_NO_AUDIO_RESERVATION=1 \
-    JACK_PROMISCUOUS_SERVER=audio \
     JACK_SAMPLE_RATE=48000 \
     JACK_PERIOD=128
 
@@ -23,7 +22,7 @@ RUN export ARCH=`dpkg --print-architecture` \
     && rm jacktrip.tgz \
     && install -m 755 ./jacktrip "/usr/local/bin"
 
-COPY audio.conf /etc/security/limits.d/audio.conf
+#COPY audio.conf /etc/security/limits.d/audio.conf
 COPY entrypoint.sh /sbin/entrypoint.sh
 
 RUN chmod +x /sbin/entrypoint.sh
